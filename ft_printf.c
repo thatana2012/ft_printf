@@ -6,23 +6,29 @@
 /*   By: tjerdnap <tjerdnap@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:45:46 by tjerdnap          #+#    #+#             */
-/*   Updated: 2024/03/04 11:31:57 by tjerdnap         ###   ########.fr       */
+/*   Updated: 2024/03/04 14:33:50 by tjerdnap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_print_char(char c, int i)
+int	ft_print_char(char c)
 {
+	int	i;
+
+	i = 0;
 	write(1, &c, 1);
 	i++;
 	return (i);
 }
 
-int	ft_print_str(char *s, int i)
+int	ft_print_str(char *s)
 {
+	int	i;
+
+	i = 0;
 	if (!s)
-		i = ft_print_str("(null)", i);
+		i += ft_print_str("(null)");
 	else
 	{
 		while (*s)
@@ -35,22 +41,27 @@ int	ft_print_str(char *s, int i)
 	return (i);
 }
 
-int	ft_find_format(const char *format, va_list ap, int i, int j)
+int	ft_find_format(const char *format, va_list ap, int j)
 {
-	if (format[j] == 'c')
-		i = ft_print_char(va_arg(ap, int), i);
+	int	i;
+
+	i = 0;
+	if (format[j] == '%')
+		i += ft_print_char('%');
+	else if (format[j] == 'c')
+		i += ft_print_char(va_arg(ap, int));
 	else if (format[j] == 's')
-		i = ft_print_str(va_arg(ap, char *), i);
+		i += ft_print_str(va_arg(ap, char *));
 	else if (format[j] == 'p')
-		i = ft_print_ptr(va_arg(ap, void *), i);
+		i += ft_print_ptr(va_arg(ap, void *));
 	else if (format[j] == 'd' || format[j] == 'i')
-		i = ft_print_int(va_arg(ap, int), i);
+		i += ft_print_int(va_arg(ap, int));
 	else if (format[j] == 'u')
-		i = ft_print_uint(va_arg(ap, unsigned int), i);
+		i += ft_print_uint(va_arg(ap, unsigned int));
 	else if (format[j] == 'x')
-		i = ft_print_hex(va_arg(ap, unsigned int), i, 1);
+		i += ft_print_hex(va_arg(ap, unsigned int), 1);
 	else if (format[j] == 'X')
-		i = ft_print_hex(va_arg(ap, unsigned int), i, 0);
+		i += ft_print_hex(va_arg(ap, unsigned int), 0);
 	return (i);
 }
 
@@ -66,7 +77,7 @@ int	ft_printf(const char *format, ...)
 	while (format[j])
 	{
 		if (format[j] == '%')
-			i += ft_find_format(format, ap, i, ++j);
+			i += ft_find_format(format, ap, ++j);
 		else
 		{
 			i++;
@@ -106,22 +117,22 @@ int	main(void)
 	int				std_X;
 
 	c = 'n';
-	//char s[10] = "Hello";
 	s = "hello";
 	p = &c;
-	// char *p = NULL;
 	d = 12;
-	i = -345;
+	i = -42;
 	// int d = 123456780;
 	// int i = -2147483648;
 	u = 1234;
 	x = 12334;
 	X = 12334;
-	printf("\t  %%c \t%%s \t%%p \t\t%%d \t%%i \t%%u \t%%x \t%%X\n");
-	printf("printf:    %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n", c, s, p, d, i,
-		u, x, X);
-	ft_printf("ft_printf: %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n", c, s, p, d,
-		i, u, x, X);
+	ft_printf("\t  %%c \t%%s \t%%p \t\t%%d \t%%i \t%%u \t%%x \t%%X\n");
+	int me_all = ft_printf("printf:    %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n",
+			c,
+			s, p, d, i, u, x, X);
+	int std_all = printf("ft_printf: %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n",
+			c, s,
+			p, d, i, u, x, X);
 	// COMPARISON OF RETURN VALUE
 	me_c = ft_printf("%c", c);
 	std_c = printf("%c", c);
@@ -156,6 +167,8 @@ int	main(void)
 	printf("std_x: %d\n", std_x);
 	printf("me_X:  %d\n", me_X);
 	printf("std_X: %d\n", std_X);
+	printf("me_all:  %d\n", me_all);
+	printf("std_all: %d\n", std_all);
 	return (0);
 }
 */
