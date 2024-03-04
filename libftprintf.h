@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tjerdnap <tjerdnap@student.42bangkok.co    +#+  +:+       +#+        */
+/*   By: tjerdnap <tjerdnap@student.42bangkok.com>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:12:06 by tjerdnap          #+#    #+#             */
-/*   Updated: 2024/03/01 11:18:20 by tjerdnap         ###   ########.fr       */
+/*   Updated: 2024/03/03 07:49:43 by tjerdnap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
