@@ -6,7 +6,7 @@
 /*   By: tjerdnap <tjerdnap@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 09:45:46 by tjerdnap          #+#    #+#             */
-/*   Updated: 2024/03/04 14:33:50 by tjerdnap         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:51:42 by tjerdnap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,10 +115,12 @@ int	main(void)
 	int				std_x;
 	int				me_X;
 	int				std_X;
+	int				me_longmax_p;
+	int				std_longmax_p;
 
 	c = 'n';
 	s = "hello";
-	p = &c;
+	p = NULL;
 	d = 12;
 	i = -42;
 	// int d = 123456780;
@@ -128,11 +130,9 @@ int	main(void)
 	X = 12334;
 	ft_printf("\t  %%c \t%%s \t%%p \t\t%%d \t%%i \t%%u \t%%x \t%%X\n");
 	int me_all = ft_printf("printf:    %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n",
-			c,
-			s, p, d, i, u, x, X);
+			c, s, p, d, i, u, x, X);
 	int std_all = printf("ft_printf: %c\t %s\t %p\t %d\t %i\t %u\t %x\t %X\n",
-			c, s,
-			p, d, i, u, x, X);
+			c, s, p, d, i, u, x, X);
 	// COMPARISON OF RETURN VALUE
 	me_c = ft_printf("%c", c);
 	std_c = printf("%c", c);
@@ -150,6 +150,14 @@ int	main(void)
 	std_x = printf("%x", x);
 	me_X = ft_printf("%X", X);
 	std_X = printf("%X", X);
+	me_longmax_p = ft_printf("%pp%p%p", (void *)LONG_MAX + 423856, (void *)0,
+			(void *)INT_MAX);
+	std_longmax_p = printf("%pp%p%p", (void *)LONG_MAX + 423856, (void *)0,
+			(void *)INT_MAX);
+	ft_printf("\nme:  %pp%p%p\n", (void *)LONG_MAX + 423856, (void *)0,
+		(void *)INT_MAX);
+	printf("\nstd: %pp%p%p\n", (void *)LONG_MAX + 423856, (void *)0,
+		(void *)INT_MAX);
 	printf("\n");
 	printf("me_c:  %d\n", me_c);
 	printf("std_c: %d\n", std_c);
@@ -169,6 +177,8 @@ int	main(void)
 	printf("std_X: %d\n", std_X);
 	printf("me_all:  %d\n", me_all);
 	printf("std_all: %d\n", std_all);
+	printf("me_longmax_p:  %d\n", me_longmax_p);
+	printf("std_longmax_p: %d\n", std_longmax_p);
 	return (0);
 }
 */

@@ -6,7 +6,7 @@
 /*   By: tjerdnap <tjerdnap@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 10:10:52 by tjerdnap          #+#    #+#             */
-/*   Updated: 2024/03/04 14:24:37 by tjerdnap         ###   ########.fr       */
+/*   Updated: 2024/03/04 15:51:57 by tjerdnap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_print_int(int num)
 	return (i);
 }
 
-int	ft_print_hex(size_t hex, int lower)
+int	ft_print_hex(unsigned long long hex, int lower)
 {
 	int	i;
 
@@ -63,15 +63,15 @@ int	ft_print_hex(size_t hex, int lower)
 
 int	ft_print_ptr(void *ptr)
 {
-	size_t	p;
-	int		i;
+	unsigned long long	p;
+	int					i;
 
 	i = 0;
 	if (!ptr)
 		i += ft_print_str("(nil)");
 	else
 	{
-		p = (size_t)ptr;
+		p = (unsigned long long)ptr;
 		i += ft_print_str("0x");
 		i += ft_print_hex(p, 1);
 	}
@@ -89,8 +89,6 @@ int	ft_print_uint(unsigned int num)
 		i += ft_print_char(num % 10 + '0');
 	}
 	else
-	{
 		i = ft_print_char(num + '0');
-	}
 	return (i);
 }
