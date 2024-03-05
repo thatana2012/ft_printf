@@ -6,7 +6,7 @@
 /*   By: tjerdnap <tjerdnap@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 14:12:06 by tjerdnap          #+#    #+#             */
-/*   Updated: 2024/03/04 15:51:49 by tjerdnap         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:36:24 by tjerdnap         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <limits.h>
 # include <stdarg.h>
-# include <stdint.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
